@@ -107,13 +107,12 @@
         return [self GET_contacts];
     } else if([requestString isEqualToString:@"/contacts/new"]) {
         return [self POST_contacts_new:request];
+    } else {
+        MockServerResponse* ret = [[MockServerResponse alloc] init];
+        ret.errorCode = 1;
+        ret.response = @{};
+        return ret;
     }
-
-    MockServerResponse* ret = [[MockServerResponse alloc] init];
-    ret.errorCode = 1;
-    ret.response = @{};
-    
-    return ret;
 }
 
 @end
